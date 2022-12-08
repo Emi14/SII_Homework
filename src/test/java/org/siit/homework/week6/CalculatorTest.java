@@ -18,7 +18,6 @@ public class CalculatorTest {
     public void setUp(){
         calculator = new Calculator();
         elem = new ArrayList<>();
-
     }
 
     @Test

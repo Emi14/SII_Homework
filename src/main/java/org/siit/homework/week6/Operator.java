@@ -9,7 +9,6 @@ public enum Operator {
     Operator(String operator) {
         this.operator = operator;
     }
-
     public String getOperator() {
         return operator;
     }

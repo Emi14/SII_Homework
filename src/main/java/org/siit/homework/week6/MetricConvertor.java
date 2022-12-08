@@ -7,12 +7,11 @@ public enum MetricConvertor {
     km(1000000),
     dm(100);
 
-    private int scale;
+    private final int scale;
 
     MetricConvertor(int scale) {
         this.scale = scale;
     }
-
     public int getScale() {
         return scale;
     }

@@ -9,7 +9,6 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-
         System.out.print("Enter expression to be calculated: ");
         String expression = scanner.nextLine();
 
