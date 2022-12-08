@@ -89,5 +89,5 @@ public class Calculator
     public int getAnswer() {
         return answer;
     }
-    
+
 }
