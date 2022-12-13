@@ -8,7 +8,7 @@ import org.siit.homework.week7.exception.OutOfBoundsException;
 import java.time.DateTimeException;
 import java.util.*;
 
-import static org.siit.homework.week7.StudentRepository.addStudent;
+import static org.siit.homework.week7.StudentRepository.*;
 
 public class Main {
 
@@ -18,12 +18,14 @@ public class Main {
     public static String userInputDateOfBirth;
     public static String userInputGender;
     public static String userInputId;
+    public static Set<Student> studentSet = new HashSet<>();
+
+    //TODO refactoring
 
     public static void main(String[] args) {
 
-        Set<Student> studentSet = new HashSet<>();
-
-        try (Scanner scanner = new Scanner(System.in)) {
+        //TODO maybe extract the menu to a different method so you can call it everytime
+        try (Scanner scanner = new Scanner(System.in)) { //TODO get rid of the try and close the scanner
             System.out.println("Welcome to StdRepo!");
             System.out.println("You can choose from the following operations by typing the number:");
             System.out.println("1 - To add a student to the repo");
@@ -32,18 +34,19 @@ public class Main {
             System.out.println("4 - To list all the students from the repo");
             System.out.println("QUIT - To exit the app");
 
+            //TODO make it not crash at every single little typo
             System.out.print("Type here: ");
             String operationChoice = scanner.nextLine();
             while (!operationChoice.equals(QUIT_MENU)) {
                 if (operationChoice.equals("1")) {
-                    System.out.println("You chose to add a new student to the repository");
+                    System.out.println("You chose to add a new student to the repository!");
                     System.out.println("Please provide the following details:");
                     try {
                         System.out.print("Student's first name: ");
                         userInputFirstName = scanner.nextLine();
                         System.out.print("Student's last name: ");
                         userInputLastName = scanner.nextLine();
-                        System.out.print("Student's date of birth (YYY-MM-DD format): ");
+                        System.out.print("Student's date of birth (YYYY-MM-DD format): ");
                         userInputDateOfBirth = scanner.nextLine();
                         System.out.print("Student's gender (M/F): ");
                         userInputGender = scanner.nextLine();
@@ -59,85 +62,62 @@ public class Main {
                         System.out.println(e.getMessage());
                         System.out.println("Please refresh the application");
                         break;
-                    }
-                    catch (DateTimeException e) {
+                    } catch (DateTimeException e) {
                         System.out.println("Birth date should respect the YYYY-MM-DD format");
                         break;
                     }
                     System.out.print("Choose another operation: ");
                     operationChoice = scanner.nextLine();
-                } //TODO maybe extract the menu to a different method so you can call it everytime
+                }
+                if (operationChoice.equals("2")) {
+                    System.out.println("You chose to delete a student from the repository!");
+                    System.out.print("Please enter the CNP of the student you want to delete: ");
+                    String idToBeRemoved = scanner.nextLine();
+                    try {
+                        deleteStudent(idToBeRemoved);
+                    } catch (EmptyVariableException e) {
+                        System.out.println(e.getMessage());
+                        System.out.println("Please refresh the application");
+                        break;
+                    }
+                    System.out.print("Choose another operation: ");
+                    operationChoice = scanner.nextLine();
+                }
+                if (operationChoice.equals("3")) {
+                    System.out.println("You chose to retrieve all students of specified age!");
+                    System.out.print("Please enter the age: ");
+                    String ageToRetrieveBy = scanner.nextLine();
+                    try {
+                        retrieveStudentsOfAge(ageToRetrieveBy);
+                    } catch (InvalidInputFormatException e) {
+                        System.out.println(e.getMessage());
+                        System.out.println("Please refresh the application");
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Input must be in number format. NO LETTERS ALLOWED");
+                        System.out.println("Please refresh the application");
+                        break;
+                    }
+                    System.out.print("Choose another operation: ");
+                    operationChoice = scanner.nextLine();
+                }
+                if (operationChoice.equals("4")) {
+                    System.out.println("You chose to list all the students ordered by Last Name or Birth Date");
+                    System.out.println("Please select the criteria by typing the corresponding number:");
+                    System.out.println("1. By last name");
+                    System.out.println("2. By birth date");
+                    String sortingCriteria = scanner.nextLine();
+                    try {
+                        listSortedStudents(sortingCriteria);
+                    } catch (InvalidInputFormatException e) {
+                        System.out.println(e.getMessage());
+                        System.out.println("Please refresh the application");
+                        break;
+                    }
+                    System.out.print("Choose another operation: ");
+                    operationChoice = scanner.nextLine();
+                }
             }
         }
-
-
     }
-
-
-
-
-
-//    private static void toBeIncluded() {
-//        //Implemented minimal add operation
-//        //Generating hashSet with id uniqueness
-//        Set<Student> studentSet = new HashSet<>();
-//        studentSet.add(new Student("Felix", "Cirebea", "1996-11-25", "M", "123456"));
-//        studentSet.add(new Student("Radu", "Lascau", "1996-11-26", "M", "645642"));
-//        studentSet.add(new Student("Maria", "Pop", "1996-12-20", "F", "867466"));
-//        studentSet.add(new Student("Daria", "Pop", "1985-03-15", "F", "867476"));
-//        studentSet.add(new Student("Daria", "Cirebea", "1985-03-15", "F", "867477"));
-//        //Printing hashSet
-//        for (Student student : studentSet) {
-//            System.out.println(student);
-//        }
-//        System.out.println();
-//
-//        //Implemented minimal delete operation
-//        String idToBeRemoved = "867466";
-//        //Removing Maria Pop
-//        studentSet.removeIf(student -> student.getId().equals(idToBeRemoved));
-//        for (Student student : studentSet) {
-//            System.out.println(student);
-//        }
-//        System.out.println();
-//
-//        //Implemented minimal retrieve operation based on user input age
-//        //AgeCalculator based on input compared to currentDate
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.print("Type the age desired: ");
-//        int input = Integer.parseInt(scanner.nextLine());
-//        for (Student student : studentSet) {
-//            int age = calculateAge(student.getBirthDate());
-//            if (age == input) {
-//                System.out.println(student);
-//            }
-//        }
-//
-//        //implemented minimal list students operation
-//        List<Student> listByBirthDate;
-//        List<Student> listByLastName;
-//        String listInput = scanner.nextLine();
-//        scanner.close();
-//        if (listInput.equals("last-name")) {
-//            listByLastName = new ArrayList<>(studentSet);
-//            listByLastName.sort(new ComparatorByLastName());
-//            for (Student student : listByLastName) {
-//                System.out.println(student);
-//            }
-//        } else if (listInput.equals("birthdate")) {
-//            listByBirthDate = new ArrayList<>(studentSet);
-//            listByBirthDate.sort(new ComparatorByBirthDate());
-//            for (Student student : listByBirthDate) {
-//                System.out.println(student);
-//            }
-//        } else {
-//            System.err.println("Error");
-//        }
-//
-//        //TODO needs scanner to be created
-////        String stringInput = scanner.nextLine(); //reads the year from kb on YYYY-MM-DD
-////        System.out.println(isValidBirthDate(stringInput)); //checks if the format is respected
-//    }
-
-
 }
