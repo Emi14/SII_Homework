@@ -1,7 +1,9 @@
 package org.siit.homework.week7;
 
+
 import java.util.Objects;
 
+@SuppressWarnings("All")
 public class Student {
 
     private String firstName;

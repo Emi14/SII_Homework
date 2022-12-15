@@ -14,12 +14,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.siit.homework.week7.Main.studentSet;
-
 public class StudentRepository {
-
-    private static List<Student> listByBirthDate;
-    private static List<Student> listByLastName;
 
     public static void addStudent(Set<Student> studentSet, String firstName,
                                   String lastName, String birthDate, String gender,
@@ -42,17 +37,16 @@ public class StudentRepository {
         studentSet.add(new Student(firstName, lastName, birthDate, gender, id));
     }
 
-    private static boolean isValidBirthDate(String input) { //TODO regex tutorial
+    private static boolean isValidBirthDate(String input) {
         //With this method you can enforce a pattern on user input birthdate
-        String regex = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"; //stack overflow regex
+        String regex = "^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"; //stack overflow regex
         // to check YYYY-MM-DD format of birthdate
         Pattern p = Pattern.compile(regex); //compile the regex
         Matcher m = p.matcher(input); //tries to match input against regex
         return m.matches();
     }
 
-    //TODO tests tests tests
-    public static void retrieveStudentsOfAge(String input) throws InvalidInputFormatException {
+    public static void retrieveStudentsOfAge(Set<Student> studentSet, String input) throws InvalidInputFormatException {
         int inputAge = Integer.parseInt(input);
         if (inputAge < 0) {
             throw new InvalidInputFormatException("Age cannot be negative");
@@ -66,7 +60,6 @@ public class StudentRepository {
     }
 
     private static int calculateAge(String birthDate) {
-        //Calculates age being the difference between getBirthDate result and currentDate
         LocalDate dateOfBirth = LocalDate.parse(birthDate);
         LocalDate currentDate = LocalDate.now();
         if (dateOfBirth != null) {
@@ -76,7 +69,7 @@ public class StudentRepository {
         }
     }
 
-    public static void deleteStudent(String id) throws EmptyVariableException {
+    public static void deleteStudent(Set<Student> studentSet, String id) throws EmptyVariableException {
         if (studentSet.isEmpty()) {
             throw new EmptyVariableException("The repository is currently empty");
         }
@@ -87,15 +80,15 @@ public class StudentRepository {
         }
     }
 
-    public static void listSortedStudents(String input) throws InvalidInputFormatException {
+    public static void listSortedStudents(Set<Student> studentSet, String input) throws InvalidInputFormatException {
         if (input.equals("1")) {
-            listByLastName = new ArrayList<>(studentSet);
+            List<Student> listByLastName = new ArrayList<>(studentSet);
             listByLastName.sort(new ComparatorByLastName());
             for (Student student : listByLastName) {
                 System.out.println(student);
             }
         } else if (input.equals("2")) {
-            listByBirthDate = new ArrayList<>(studentSet);
+            List<Student> listByBirthDate = new ArrayList<>(studentSet);
             listByBirthDate.sort(new ComparatorByBirthDate());
             for (Student student : listByBirthDate) {
                 System.out.println(student);
