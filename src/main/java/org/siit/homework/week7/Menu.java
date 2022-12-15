@@ -12,7 +12,7 @@ import java.util.logging.*;
 import static org.siit.homework.week7.StudentRepository.*;
 import static org.siit.homework.week7.StudentRepository.addStudent;
 
-public class Menu {
+public abstract class Menu {
 
     public static String operationChoice;
     public static Logger logger = Logger.getLogger(Menu.class.getName());
@@ -88,12 +88,8 @@ public class Menu {
             userInputGender = scanner.nextLine();
             System.out.print("Student's CNP: ");
             userInputId = scanner.nextLine();
-            addStudent(studentSet,
-                    userInputFirstName,
-                    userInputLastName,
-                    userInputDateOfBirth,
-                    userInputGender,
-                    userInputId);
+            addStudent(studentSet, userInputFirstName, userInputLastName,
+                    userInputDateOfBirth, userInputGender, userInputId);
         } catch (EmptyVariableException | InvalidInputFormatException | OutOfBoundsException e) {
             logger.log(Level.SEVERE, e.getMessage(), e.getCause());
             System.out.println(e.getMessage());

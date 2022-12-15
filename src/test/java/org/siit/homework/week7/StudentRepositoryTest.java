@@ -68,7 +68,8 @@ class StudentRepositoryTest {
     }
 
     @Test
-    public void testAddStudent_whenBirthDateDoNotRespectFormat_thenExceptionThrown() {assertThrows(DateTimeException.class,
+    public void testAddStudent_whenBirthDateDoNotRespectFormat_thenExceptionThrown() {
+        assertThrows(DateTimeException.class,
                 () -> StudentRepository.addStudent(studentSet, "Felix",
                         "Cirebea", "1996-25-11", "M", "123456"));
 
@@ -154,7 +155,9 @@ class StudentRepositoryTest {
         Scanner scanner2 = new Scanner(actualResult);
         int firstLine = scanner1.nextLine().compareTo(scanner2.nextLine());
         int secondLine = scanner1.nextLine().compareTo(scanner2.nextLine());
-        assertEquals(0, firstLine+secondLine);
+        scanner1.close();
+        scanner2.close();
+        assertEquals(0, firstLine + secondLine);
     }
 
     @Test
@@ -169,7 +172,9 @@ class StudentRepositoryTest {
         Scanner scanner2 = new Scanner(actualResult);
         int firstLine = scanner1.nextLine().compareTo(scanner2.nextLine());
         int secondLine = scanner1.nextLine().compareTo(scanner2.nextLine());
-        assertEquals(0, firstLine+secondLine);
+        scanner1.close();
+        scanner2.close();
+        assertEquals(0, firstLine + secondLine);
     }
 
 }

@@ -19,22 +19,53 @@ public class StudentRepository {
     public static void addStudent(Set<Student> studentSet, String firstName,
                                   String lastName, String birthDate, String gender,
                                   String id) throws EmptyVariableException, OutOfBoundsException, InvalidInputFormatException {
+        checkFirstName(firstName);
+        checkLastName(lastName);
+        checkBirthDate(birthDate);
+        checkGender(gender);
+        checkId(id);
+        studentSet.add(new Student(firstName.trim(), lastName.trim(), birthDate, gender.toUpperCase(), id.trim()));
+    }
 
-        LocalDate dateOfBirth = LocalDate.parse(birthDate);
-        if (firstName.equals("")) {
-            throw new EmptyVariableException("First name field cannot be empty");
-        } else if (lastName.equals("")) {
-            throw new EmptyVariableException("Last name field cannot be empty");
-        } else if (dateOfBirth.getYear() <= 1900 || dateOfBirth.getYear() > LocalDate.now().getYear()) {
-            throw new OutOfBoundsException("Birth date should be between 1900 and " + LocalDate.now().getYear());
-        } else if (!isValidBirthDate(birthDate)) {
-            throw new InvalidInputFormatException("Birth date should respect the YYYY-MM-DD format");
-        } else if (!gender.equals("M") && !gender.equals("m") && !gender.equals("F") && !gender.equals("f")) {
-            throw new InvalidInputFormatException("Gender should be M or F");
-        } else if (id.equals("")) {
+    private static void checkId(String id) throws EmptyVariableException, InvalidInputFormatException {
+        if (id.equals("")) {
             throw new EmptyVariableException("CNP field cannot be empty");
         }
-        studentSet.add(new Student(firstName, lastName, birthDate, gender, id));
+        if (!isNumber(id.trim()) || id.trim().length() != 13) {
+            throw new InvalidInputFormatException("CNP must 13 characters long and must contain only numbers");
+        }
+    }
+
+    private static void checkGender(String gender) throws InvalidInputFormatException {
+        if (!gender.equals("M") && !gender.equals("m") && !gender.equals("F") && !gender.equals("f")) {
+            throw new InvalidInputFormatException("Gender should be M or F");
+        }
+    }
+
+    private static void checkBirthDate(String birthDate) throws OutOfBoundsException, InvalidInputFormatException {
+        LocalDate dateOfBirth = LocalDate.parse(birthDate);
+        if (!isValidBirthDate(birthDate)) {
+            throw new InvalidInputFormatException("Birth date should respect the YYYY-MM-DD format");
+        }
+        if ((dateOfBirth.getYear() <= 1900) || (dateOfBirth.getYear() > LocalDate.now().getYear())) {
+            throw new OutOfBoundsException("Birth date should be between 1900 and " + LocalDate.now().getYear());
+        }
+        if (calculateAge(birthDate) < 18) {
+            throw new OutOfBoundsException("Students must be at least 18 years old");
+        }
+    }
+
+    private static void checkLastName(String lastName) throws EmptyVariableException {
+        if (lastName.equals("")) {
+            throw new EmptyVariableException("Last name field cannot be empty");
+        }
+    }
+
+
+    private static void checkFirstName(String firstName) throws EmptyVariableException {
+        if (firstName.equals("")) {
+            throw new EmptyVariableException("First name field cannot be empty");
+        }
     }
 
     private static boolean isValidBirthDate(String input) {
@@ -95,6 +126,15 @@ public class StudentRepository {
             }
         } else {
             throw new InvalidInputFormatException("Invalid input");
+        }
+    }
+
+    public static boolean isNumber(String str) {
+        try {
+            Long.parseLong(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 
