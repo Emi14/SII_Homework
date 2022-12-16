@@ -69,11 +69,9 @@ public class StudentRepository {
     }
 
     private static boolean isValidBirthDate(String input) {
-        //With this method you can enforce a pattern on user input birthdate
-        String regex = "^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"; //stack overflow regex
-        // to check YYYY-MM-DD format of birthdate
-        Pattern p = Pattern.compile(regex); //compile the regex
-        Matcher m = p.matcher(input); //tries to match input against regex
+        String regex = "^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(input);
         return m.matches();
     }
 

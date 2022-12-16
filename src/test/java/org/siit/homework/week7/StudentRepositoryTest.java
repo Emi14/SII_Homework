@@ -22,8 +22,10 @@ class StudentRepositoryTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     private final Set<Student> studentSet = new HashSet<>();
-    private final Student firstTestStudent = new Student("Felix", "Cirebea", "1996-11-25", "M", "456123");
-    private final Student secondTestStudent = new Student("Maria", "Pop", "1975-03-15", "F", "123456");
+    private final Student firstTestStudent = new Student(
+            "Felix", "Cirebea", "1996-11-25", "M", "456123");
+    private final Student secondTestStudent = new Student(
+            "Maria", "Pop", "1975-03-15", "F", "123456");
 
     @BeforeEach
     public void setUpStreams() {
