@@ -1,7 +1,7 @@
 package org.siit.homework.week7.comparator;
 
 
-import org.siit.homework.week7.Student;
+import org.siit.homework.week7.student.Student;
 
 import java.util.Comparator;
 

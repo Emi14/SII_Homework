@@ -1,4 +1,4 @@
-package org.siit.homework.week7;
+package org.siit.homework.week7.student;
 
 
 import java.util.Objects;

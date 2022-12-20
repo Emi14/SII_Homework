@@ -1,10 +1,12 @@
 package org.siit.homework.week7;
 
+import org.siit.homework.week7.student.Student;
+
 import java.util.*;
 
 import static org.siit.homework.week7.Menu.*;
 
-public class Main {
+public class Week7Main {
 
     public static final String QUIT_MENU = "QUIT";
 

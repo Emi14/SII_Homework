@@ -25,3 +25,9 @@ hs_err_pid*
 
 # Readme files
 *.md
+
+# IO resources
+output.txt
+test-input.csv
+input.csv
+results.txt

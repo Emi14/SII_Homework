@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.siit.homework.week7.exception.EmptyVariableException;
 import org.siit.homework.week7.exception.InvalidInputFormatException;
 import org.siit.homework.week7.exception.OutOfBoundsException;
+import org.siit.homework.week7.student.Student;
+import org.siit.homework.week7.student.repository.StudentRepository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

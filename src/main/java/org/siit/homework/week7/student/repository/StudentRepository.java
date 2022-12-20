@@ -1,10 +1,11 @@
-package org.siit.homework.week7;
+package org.siit.homework.week7.student.repository;
 
 import org.siit.homework.week7.comparator.ComparatorByBirthDate;
 import org.siit.homework.week7.comparator.ComparatorByLastName;
 import org.siit.homework.week7.exception.EmptyVariableException;
 import org.siit.homework.week7.exception.InvalidInputFormatException;
 import org.siit.homework.week7.exception.OutOfBoundsException;
+import org.siit.homework.week7.student.Student;
 
 import java.time.LocalDate;
 import java.time.Period;

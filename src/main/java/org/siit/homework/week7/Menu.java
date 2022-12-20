@@ -3,14 +3,15 @@ package org.siit.homework.week7;
 import org.siit.homework.week7.exception.EmptyVariableException;
 import org.siit.homework.week7.exception.InvalidInputFormatException;
 import org.siit.homework.week7.exception.OutOfBoundsException;
+import org.siit.homework.week7.student.Student;
 
 import java.time.DateTimeException;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.logging.*;
 
-import static org.siit.homework.week7.StudentRepository.*;
-import static org.siit.homework.week7.StudentRepository.addStudent;
+import static org.siit.homework.week7.student.repository.StudentRepository.*;
+import static org.siit.homework.week7.student.repository.StudentRepository.addStudent;
 
 public abstract class Menu {
 
