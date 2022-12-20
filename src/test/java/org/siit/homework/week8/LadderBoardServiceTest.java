@@ -98,6 +98,7 @@ class LadderBoardServiceTest {
         testLine = "Third Place - Cirebea Felix 35:37 (35:17 + 2)";
         readLine = reader.readLine();
         assertEquals(testLine, readLine);
+        reader.close();
     }
 
 }
