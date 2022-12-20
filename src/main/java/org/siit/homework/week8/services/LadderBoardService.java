@@ -1,5 +1,6 @@
-package org.siit.homework.week8;
+package org.siit.homework.week8.services;
 
+import org.siit.homework.week8.athlete.Athlete;
 import org.siit.homework.week8.enums.CountryCode;
 
 import java.io.*;
@@ -41,7 +42,7 @@ public abstract class LadderBoardService {
         char findChar = 'o';
         int charCount = 0;
         for (String s : shootingResults) {
-            s = s.toLowerCase().trim(); //ensure lower case and now whitespaces //just some error proof stuff
+            s = s.toLowerCase().trim();
             if (s.contains("o")) {
                 for (int i = 0; i < s.length(); i++) {
                     if (s.charAt(i) == findChar) {
@@ -60,19 +61,24 @@ public abstract class LadderBoardService {
     }
 
     private static String convertDurationToString(Duration duration) {
-        char[] durationCharArray = duration.toString().toCharArray();
-        if (durationCharArray.length == 5) {
-            return String.valueOf(durationCharArray[2]) + durationCharArray[3] + ":00";
-        } else if (durationCharArray.length == 7) {
-            return String.valueOf(durationCharArray[2]) + durationCharArray[3] + ":0" + durationCharArray[5];
+        String s = duration.toString();
+        if (s.length() == 5) {
+            return String.valueOf(s.charAt(2)) + s.charAt(3) + ":00";
+        } else if (s.length() == 7) {
+            return String.valueOf(s.charAt(2)) + s.charAt(3) + ":0" + s.charAt(5);
         }
-        return String.valueOf(durationCharArray[2]) + durationCharArray[3] + ":" + durationCharArray[5] + durationCharArray[6];
+        return String.valueOf(s.charAt(2)) + s.charAt(3) + ":" + s.charAt(5) + s.charAt(6);
     }
 
     private static Duration convertStringToDuration(String time) {
         String[] splitRaceTime = time.split(":");
-        Duration duration = Duration.ofMinutes(Integer.parseInt(splitRaceTime[0]));
-        return duration.plusSeconds(Integer.parseInt(splitRaceTime[1]));
+        if (splitRaceTime.length == 3) {
+            return Duration.ofHours(Integer.parseInt(splitRaceTime[0]))
+                    .plusMinutes(Integer.parseInt(splitRaceTime[1]))
+                    .plusSeconds(Integer.parseInt(splitRaceTime[2]));
+        }
+        return Duration.ofMinutes(Integer.parseInt(splitRaceTime[0]))
+                .plusSeconds(Integer.parseInt(splitRaceTime[1]));
     }
 
     public static void writeResults(Set<Athlete> athleteSet) {

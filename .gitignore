@@ -27,7 +27,4 @@ hs_err_pid*
 *.md
 
 # IO resources
-output.txt
-test-input.csv
-input.csv
-results.txt
+*.txt

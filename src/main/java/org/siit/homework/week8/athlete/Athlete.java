@@ -1,4 +1,4 @@
-package org.siit.homework.week8;
+package org.siit.homework.week8.athlete;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,10 +16,10 @@ public class Athlete {
     private int number;
     private String name;
     private CountryCode country;
-    private String raceTime; // w/ penalties
+    private String raceTime;
     private String[] shootingResults;
     private int missedShots;
-    private String totalRaceTime; // with penalties
+    private String totalRaceTime;
     private Duration duration;
 
     @Override

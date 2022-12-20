@@ -1,6 +1,6 @@
 package org.siit.homework.week8.comparator;
 
-import org.siit.homework.week8.Athlete;
+import org.siit.homework.week8.athlete.Athlete;
 
 import java.util.Comparator;
 
