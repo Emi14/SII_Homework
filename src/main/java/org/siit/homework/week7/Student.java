@@ -19,7 +19,9 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.id = id;
+
     }
+
 
     public String getFirstName() {
         return firstName;

@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         StudentRepository repository = new StudentRepository();
 
+
         try {
             // Add some students
             repository.addStudent(new Student("Alice", "Smith", LocalDate.of(2000, 1, 1), "f", "123456789"));
