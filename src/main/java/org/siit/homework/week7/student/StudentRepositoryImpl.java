@@ -1,12 +1,10 @@
 package org.siit.homework.week7.student;
 
-
 import org.siit.homework.week7.comparator.StudentComparatorByBirthDate;
 import org.siit.homework.week7.comparator.StudentComparatorByLastName;
 import org.siit.homework.week7.exception.DeleteStudentException;
 import org.siit.homework.week7.exception.StudentCreationException;
 import org.siit.homework.week7.exception.StudentException;
-
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashSet;

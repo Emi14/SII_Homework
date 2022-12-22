@@ -3,7 +3,6 @@ package org.siit.homework.week7.student;
 import org.siit.homework.week7.exception.DeleteStudentException;
 import org.siit.homework.week7.exception.StudentCreationException;
 import org.siit.homework.week7.exception.StudentException;
-
 import java.util.List;
 
 public interface IStudentRepository {

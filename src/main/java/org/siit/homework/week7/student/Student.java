@@ -1,8 +1,5 @@
 package org.siit.homework.week7.student;
 
-
-import org.siit.homework.week7.exception.StudentCreationException;
-
 import java.util.Objects;
 
 public class Student {
@@ -11,7 +8,6 @@ public class Student {
     int birthDate;
     String gender;
     String cnp;
-
 
     public Student(String firstName, String lastName, int birthDate, String gender, String cnp) {
 
