@@ -14,8 +14,10 @@ public class Main {
     private static final IStudentRepository studentRepository = new StudentRepositoryImpl();
 
     public static void main(String[] args) {
+
         Logger logger = Logger.getLogger(Main.class.getName());
         studentMenu(logger);
+
     }
 
     private static void studentMenu(Logger logger) {
@@ -140,7 +142,6 @@ public class Main {
             printInstructions();
         }
     }
-
     public static void printInstructions() {
         System.out.println("\nPress ");
         System.out.println("\t 0 - To print choice options.");
