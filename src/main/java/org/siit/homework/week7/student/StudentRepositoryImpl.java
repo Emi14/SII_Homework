@@ -1,5 +1,6 @@
 package org.siit.homework.week7.student;
 
+
 import org.siit.homework.week7.comparator.StudentComparatorByBirthDate;
 import org.siit.homework.week7.comparator.StudentComparatorByLastName;
 import org.siit.homework.week7.exception.DeleteStudentException;
@@ -23,7 +24,8 @@ public class StudentRepositoryImpl implements IStudentRepository {
     }
 
     @Override
-    public void addStudent(String firstName, String lastName, int birthDate, String gender, String cnp) throws StudentCreationException {
+    public void addStudent(String firstName, String lastName, int birthDate, String gender, String cnp)
+            throws StudentCreationException {
         if(firstName.isEmpty() || lastName.isEmpty()) {
             throw new StudentCreationException("First Name or Last Name should not be empty.");
         }
