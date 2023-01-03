@@ -2,7 +2,7 @@ package org.siit.homework.week6;
 
 import java.util.Scanner;
 
-public class Main {
+public class MainWeek6 {
     public static void main(String[] args) {
 
         System.out.println("This is the main class for week 6 homework");
