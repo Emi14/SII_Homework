@@ -1,3 +1,5 @@
+package week8Test;
+
 import org.junit.jupiter.api.Test;
 import org.siit.homework.week8.Athlete;
 import org.siit.homework.week8.CountryCodes;
