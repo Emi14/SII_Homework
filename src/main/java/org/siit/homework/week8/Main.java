@@ -14,8 +14,8 @@ public class Main {
         System.out.println("This is the main class for week 8 homework");
         System.out.println();
         Set<Athlete> athleteSet = new TreeSet<>(new SortByDuration());
-        String input = "src/files/real_file/athletes.csv";
-        String output = "src/files/real_file/results.out";
+        String input = "src/files/real_file/week8/athletes.csv";
+        String output = "src/files/real_file/week8/results.out";
         LadderBoardService ladderBoard = new LadderBoard();
         ladderBoard.readFile(athleteSet, input);
         athleteSet.forEach(System.out::println);

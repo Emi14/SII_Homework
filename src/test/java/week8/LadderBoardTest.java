@@ -84,7 +84,7 @@ class LadderBoardTest {
         testLadderBoard.generateCollection(testAthleteSet, line2);
         testLadderBoard.generateCollection(testAthleteSet, line3);
         testLadderBoard.writeResults(testAthleteSet, "src/files/real_file/results.out");
-        BufferedReader reader = new BufferedReader(new FileReader("src/files/real_file/results.out"));
+        BufferedReader reader = new BufferedReader(new FileReader("src/files/real_file/week8/results.out"));
         String testLine = "Winner - Luca Ionescu 29:15 (29:15 + 0)";
         assertEquals(testLine, reader.readLine());
         testLine = "Runner-up - Claude Evra 29:50 (29:10 + 40)";
