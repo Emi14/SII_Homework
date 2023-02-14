@@ -13,7 +13,6 @@ public class Main
 {
     public static void main(String[] args) throws IOException
     {
-        List<Person> people = new ArrayList<>();
         FileIterface file = new FileService();
 
         File reader = new File("Person.In.txt");
