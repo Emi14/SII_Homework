@@ -21,17 +21,7 @@ public class ServiceImpl implements IService {
 
         try(Scanner scanner = new Scanner(Paths.get(fileName))){
             while(scanner.hasNext()){
-                String line = scanner.nextLine();
-                String[] columns = line.split(",");
-                int athleteNumber = Integer.parseInt(columns[0]);
-                String athleteName = columns[1];
-                String countryCodes = columns[2];
-                String raceTime = columns[3];
-                List<String> shootingResults = new ArrayList<>();
-                shootingResults.add(columns[4]);
-                shootingResults.add(columns[5]);
-                shootingResults.add(columns[6]);
-                athleteList.add(new Athlete(athleteNumber, athleteName, countryCodes, raceTime, shootingResults));
+                generateCollection(athleteList, scanner);
             }
             return athleteList;
         } catch (IOException e) {
@@ -39,6 +29,21 @@ public class ServiceImpl implements IService {
         }
 
     }
+
+    void generateCollection(List<Athlete> athleteList, Scanner scanner) {
+        String line = scanner.nextLine();
+        String[] columns = line.split(",");
+        int athleteNumber = Integer.parseInt(columns[0]);
+        String athleteName = columns[1];
+        String countryCodes = columns[2];
+        String raceTime = columns[3];
+        List<String> shootingResults = new ArrayList<>();
+        shootingResults.add(columns[4]);
+        shootingResults.add(columns[5]);
+        shootingResults.add(columns[6]);
+        athleteList.add(new Athlete(athleteNumber, athleteName, countryCodes, raceTime, shootingResults));
+    }
+
     private void determineFinalStandings(List<Athlete> athleteList) {
         athleteList.sort(new AthleteComparatorByFinalRaceTime());
     }

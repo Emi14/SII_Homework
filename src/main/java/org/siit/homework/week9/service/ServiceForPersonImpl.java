@@ -11,10 +11,10 @@ import java.util.stream.Collectors;
 
 public class ServiceForPersonImpl implements IServiceForPerson{
 
-    List<String> inputLinesList = new ArrayList<>();
-
     @Override
     public List<String> readInputFile(String inputFileName) {
+
+        List<String> inputLinesList = new ArrayList<>();
 
         try(BufferedReader reader = new BufferedReader(new FileReader(inputFileName))){
             String line = reader.readLine();
@@ -51,7 +51,7 @@ public class ServiceForPersonImpl implements IServiceForPerson{
 
         return people.stream()
                 .filter(person1 -> person1.getMonthOfBirth() == targetMonth)
-                .sorted(Comparator.comparing(person1 -> person1.getFirstName()))
+                .sorted(Comparator.comparing(Person::getFirstName))
                 .collect(Collectors.toList());
 
     }
