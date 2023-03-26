@@ -12,7 +12,7 @@ public class SkiBiathlonStandingsApp {
 
     public static void main(String[] args) throws IOException {
         CSVReader reader = new CSVReader();
-        String content = reader.readCsv("src/main/java/org/siit/homework/week8/resources/athletes.csv");
+        String content = reader.readCsv("src/main/resources/week8/athletes.csv");
         System.out.println(content);
         AthleteService athleteService = new AthleteService();
         List<Athlete> athletes = athleteService.getAthletes(content);

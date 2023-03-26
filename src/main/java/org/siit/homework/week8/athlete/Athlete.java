@@ -8,6 +8,7 @@ import org.siit.homework.week8.enums.CountryCode;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Athlete implements Comparable<Athlete> {
     private String number;
     private String name;
@@ -16,7 +17,6 @@ public class Athlete implements Comparable<Athlete> {
     private String firstShooting;
     private String secondShooting;
     private String thirdShooting;
-
 
     public int getTotalTimeInSeconds() {
         int raceTime = getRaceTime();

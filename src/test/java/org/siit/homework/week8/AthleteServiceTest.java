@@ -1,4 +1,4 @@
-package week8;
+package org.siit.homework.week8;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

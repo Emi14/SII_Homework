@@ -1,7 +1,26 @@
 package org.siit.homework.week6;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("This is the main class for week 6 homework");
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Enter an expression in the format '<value> <unit> [+/-] <value> <unit> = <unit>':");
+            String input = scanner.nextLine();
+
+            if (input.equals("quit")) {
+                System.out.println("Exiting program...");
+                break;
+            }
+            MetricSystemCalculator calculator = new MetricSystemCalculator();
+            calculator.evaluateMetricExpression(input);
+        }
     }
 }
+
+
+
+
+
