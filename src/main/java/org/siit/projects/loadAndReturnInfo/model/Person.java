@@ -1,4 +1,4 @@
-package org.siit.projects.java8.model;
+package org.siit.projects.loadAndReturnInfo.model;
 
 public class Person {
 

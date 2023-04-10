@@ -1,4 +1,4 @@
-package org.siit.projects.concurrencyFestivalApp;
+package org.siit.projects.festivalApp;
 
 
 public class Main {

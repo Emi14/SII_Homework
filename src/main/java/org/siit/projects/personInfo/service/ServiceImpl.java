@@ -1,9 +1,9 @@
-package org.siit.projects.objectContainers.service;
+package org.siit.projects.personInfo.service;
 
-import org.siit.projects.objectContainers.comparator.PersonComparatorByAge;
-import org.siit.projects.objectContainers.comparator.PersonComparatorByName;
-import org.siit.projects.objectContainers.model.Hobby;
-import org.siit.projects.objectContainers.model.Person;
+import org.siit.projects.personInfo.comparator.PersonComparatorByAge;
+import org.siit.projects.personInfo.comparator.PersonComparatorByName;
+import org.siit.projects.personInfo.model.Hobby;
+import org.siit.projects.personInfo.model.Person;
 
 import java.util.*;
 

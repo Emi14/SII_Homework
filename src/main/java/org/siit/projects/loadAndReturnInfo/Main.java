@@ -1,9 +1,9 @@
-package org.siit.projects.java8;
+package org.siit.projects.loadAndReturnInfo;
 
 
-import org.siit.projects.java8.model.Person;
-import org.siit.projects.java8.service.IServiceForPerson;
-import org.siit.projects.java8.service.ServiceForPersonImpl;
+import org.siit.projects.loadAndReturnInfo.model.Person;
+import org.siit.projects.loadAndReturnInfo.service.IServiceForPerson;
+import org.siit.projects.loadAndReturnInfo.service.ServiceForPersonImpl;
 
 import java.util.List;
 

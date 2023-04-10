@@ -1,4 +1,4 @@
-package org.siit.projects.objectContainers.model;
+package org.siit.projects.personInfo.model;
 
 public class Unemployed extends Person{
 

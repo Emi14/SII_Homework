@@ -1,6 +1,6 @@
-package org.siit.projects.java8.service;
+package org.siit.projects.loadAndReturnInfo.service;
 
-import org.siit.projects.java8.model.Person;
+import org.siit.projects.loadAndReturnInfo.model.Person;
 
 import java.io.*;
 import java.time.LocalDate;

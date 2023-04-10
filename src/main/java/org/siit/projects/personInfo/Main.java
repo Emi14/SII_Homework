@@ -1,8 +1,8 @@
-package org.siit.projects.objectContainers;
+package org.siit.projects.personInfo;
 
-import org.siit.projects.objectContainers.model.*;
-import org.siit.projects.objectContainers.service.IService;
-import org.siit.projects.objectContainers.service.ServiceImpl;
+import org.siit.projects.personInfo.model.*;
+import org.siit.projects.personInfo.service.IService;
+import org.siit.projects.personInfo.service.ServiceImpl;
 
 public class Main {
 

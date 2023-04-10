@@ -1,4 +1,4 @@
-package org.siit.projects.concurrencyFestivalApp;
+package org.siit.projects.festivalApp;
 
 import java.util.ArrayList;
 import java.util.List;

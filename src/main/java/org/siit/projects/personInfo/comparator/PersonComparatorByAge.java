@@ -1,6 +1,6 @@
-package org.siit.projects.objectContainers.comparator;
+package org.siit.projects.personInfo.comparator;
 
-import org.siit.projects.objectContainers.model.Person;
+import org.siit.projects.personInfo.model.Person;
 
 import java.util.Comparator;
 
